@@ -6,7 +6,6 @@ public class Monster : MonoBehaviour
 {
     private string mName;
     private Animator animator;
-
     private ICommand altButtonCommand;
     private ICommand spaceButtonCommand;
 
@@ -25,24 +24,20 @@ public class Monster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Space button is pressed!");
             this.spaceButtonCommand.Execute();
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("A button is pressed!");
             this.altButtonCommand.Execute();
         }
     }
 
     public void attack(){
-        this.animator.SetBool("doAttack", true);
-        this.animator.SetBool("doJump", false);
+        this.animator.SetTrigger("doAttackTrigger");
     }
 
     public void jump(){
-        this.animator.SetBool("doJump", true);
-        this.animator.SetBool("doAttack", false);
+        this.animator.SetTrigger("doJumpTrigger");
     }
 }
